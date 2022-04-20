@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //atributos que representen cada elemento visual de que diseñemos
     //nota: elemento visual que van a poder usar por codigo
     private TextView txtResultado;
-    private Button BTNbotonsito;
+    private Button BTNbotonsito, BTNinvertirTexto;
     private EditText tbNombre, tbCelular;
     //ATRIBUTOS DE CLASE
 
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listener ---> algoq eu esta pendiente a que pase cierto evento
          */
         BTNbotonsito.setOnClickListener(this);
+        BTNinvertirTexto.setOnClickListener(this);
     }
 
     private void inicializarVistas()
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          */
         txtResultado = findViewById(R.id.txtResultado);
         BTNbotonsito = findViewById(R.id.BTNbotonsito);
+        BTNinvertirTexto = findViewById(R.id.BTNinvertirTexto);
         tbNombre = findViewById(R.id.tbNombre);
         tbCelular = findViewById(R.id.tbCelular);
     }
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         String invertido = "";
         /*
-        exist un metodo en ls string qe les permite acceder
+        existe un metodo en ls string qe les permite acceder
         a cada letra de la cadena y devuelve esa letra como un
         caracter simple o char
          */
@@ -93,7 +95,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view)
     {
+        //OBTENER EL VALOR QUE HACE UNICO A CADA COMPONENTE VISUAL
         obtenerInformacionUsuario();
-        invertirNumero();
+        switch (view.getId()){
+            case R.id.BTNinvertirTexto:
+                invertirTexto();
+                break;
+            case R.id.BTNbotonsito:
+                invertirNumero();
+                break;
+        }
     }
 }
